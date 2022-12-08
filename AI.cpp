@@ -28,3 +28,10 @@ string getAIPickupList(const Move& move, const BuildingState& buildingState,
 
 // have an hierarchy, first angriest, most requests, most people
 //figure out possible cases, can't have elvators in the same floor
+//- building is empty
+// - angry
+// - people per floor
+// 
+// have code that creates the string then worry abt changing the variables
+// break it into parts
+// you can have a bool
