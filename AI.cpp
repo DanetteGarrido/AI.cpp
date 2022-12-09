@@ -27,13 +27,26 @@ int peopleInBuilding(const BuildingState& buildingState) {
     }
 }
 
-
+// if the building is empty, return empty string
+string emptyBuilding(const BuildingState& buildingState){
+        bool peeps = false;
+        for (int j = 0; j < NUM_FLOORS; j++){
+           _Floor floor = buildingState.floors[i];
+            if (floor.numPeople != 0){
+                peeps = true;
+            }
+        }
+        if (peeps == false){
+            return "";
+        }
+}
 //if the elevator has people on its floor and it isn't servicing
-int serviceReadyID(const BuildingState& buildingState){
+string serviceReadyID(const BuildingState& buildingState){
     int openElevatorID = 0;
 
      for (int i = 0; i < NUM_ELEVATORS; i++) {
           openElevatorID = i;
+         _Elevator elevator = buildingState.elevators[i];
      if (buildingState.floors[elevator.currentFloor].numPeople > 0 && !elevator.isServicing) {
           if (i == 1) {
             return "e1p";
