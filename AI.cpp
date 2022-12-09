@@ -30,6 +30,26 @@ string getAIPickupList(const Move& move, const BuildingState& buildingState,
     return "";
 }
 
+//if the elevator has people on its floor and it isn't servicing
+int serviceReadyID(const BuildingState& buildingState){
+    int openElevatorID = 0;
+
+for (int i = 0; i < NUM_ELEVATORS; i++) {
+    openElevatorID = i;
+    if (buildingState.floors[elevator.currentFloor].numPeople > 0 && !elevator.isServicing) {
+        if (i == 1) {
+            return "e1p";
+        }
+        if (i == 2){
+            return "e2p";
+        }
+        if (i == 0) {
+            return "e0p";
+        }
+    }
+    int openElevatorID;
+}
+     
 
 // have an hierarchy, first angriest, most requests, most people
 //figure out possible cases, can't have elvators in the same floor
