@@ -60,13 +60,34 @@ string serviceReadyID(const BuildingState& buildingState){
     }
     int openElevatorID;
 }
-
+    
+bool isElevatorServicing(const BuildingState& buildingState, int FID) {
+    // floor ID
+    for (int i = 0; i < NUM_ELEVATORS; i++) {
+        if (buildingState.elevators[i].isServicing && buildingState.elevators[i].targetFloor == FID) {
+            return true;
+        }
+    }
+    return false;
+}
 string getAIMoveString(const BuildingState& buildingState) {
-    if (!peopleInBuilding) {
+   int available[3];
+    int numElevator = 0;
+
+    if (numElevator <= 0) {
         return "";
     }
-    if (urgentFloor) {
-        return 
+
+    if (!peopleInBuilding(buildingState)) {
+        return "";
+    }
+
+    // incorporate urgent function before vv
+    if (!isElevatorServicing(buildingState, available[numElevator])) {
+        for (int i = 0; i < 3; i++) {
+            available[numElevator] = buildingState.elevators[i].elevatorId;
+            numElevator += 1;
+        }
     }
 }
 
